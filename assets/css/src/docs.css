@@ -157,7 +157,76 @@ h4 code {
   background-color: #f9f9f9;
   border-color: #f9f9f9;
 }
-
+.bs-docs-nav .navbar-search .form-control {
+  width:350px;
+}
+/* Styles for drodown are inspired by the default .dropdown-menu class */
+.bs-docs-nav .navbar-search .tt-dropdown-menu {
+  width: 510px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  background-image: -webkit-linear-gradient(left, #e5e5e5 120px, #FFF 120px, #FFF 100%);
+  background-image: linear-gradient(left, #e5e5e5 120px, #FFF 120px, #FFF 100%);
+}
+.bs-docs-nav .navbar-search .tt-suggestion {
+  /* padding: 3px 20px; */
+  color: #333;
+  cursor: pointer;
+  overflow: hidden;
+}
+.bs-docs-nav .navbar-search .tt-suggestion + .tt-suggestion {
+  border-top:1px solid #e5e5e5;
+}
+.bs-docs-nav .navbar-search .tt-suggestion.tt-cursor {
+  color: #262626;
+  background-color: #f5f5f5;
+}
+.bs-docs-nav .navbar-search .tt-suggestion mark {
+  padding:0;
+}
+.bs-docs-nav .navbar-search .suggestion-context {
+  float:left;
+  width:120px;
+  text-align:right;
+  padding:5px;
+}
+.bs-docs-nav .navbar-search .suggestion:before {
+  content:attr(data-page);
+  display:block;
+  background:#6f5499;
+  color:#FFF;
+  font-weight:bold;
+  line-height:22px;
+  text-indent:15px;
+}
+.bs-docs-nav .navbar-search .suggestion-h1 {
+  font-weight: bold;
+  color:#563d7c;
+}
+.bs-docs-nav .navbar-search .suggestion-content {
+  width:388px;
+  float:left;
+  padding:5px;
+}
+.bs-docs-nav .navbar-search .suggestion-hierarchy {
+  /* font-weight:bold; */
+  /* font-size:12px; */
+}
+.bs-docs-nav .navbar-search .suggestion-text {
+  font-size: 12px;
+  padding:10px;
+  margin: 10px 0 0 10px;
+}
 
 /*
  * Footer

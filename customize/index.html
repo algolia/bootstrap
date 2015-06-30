@@ -17,13 +17,14 @@
 
 <!-- Bootstrap core CSS -->
 
-<link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../dist/css/bootstrap.css" rel="stylesheet">
 
 
 
 <!-- Documentation extras -->
 
-<link href="../assets/css/docs.min.css" rel="stylesheet">
+<link href="../assets/css/src/pygments-manni.css" rel="stylesheet">
+<link href="../assets/css/src/docs.css" rel="stylesheet">
 
 <!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="../assets/js/ie-emulation-modes-warning.js"></script>
@@ -85,6 +86,15 @@
         <li><a href="http://expo.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a></li>
         <li><a href="http://blog.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li>
       </ul>
+      <div class="navbar-form navbar-right navbar-search" role="search">
+        <div class="input-group">
+          <input type="text" class="form-control" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search the docs...">
+          <div class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+              <i class="glyphicon glyphicon-search"></i></button>
+          </div>
+        </div>
+      </div>
     </nav>
   </div>
 </header>
@@ -2349,6 +2359,11 @@
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
+    <label for="input-@dl-horizontal-breakpoint">@dl-horizontal-breakpoint</label>
+    <input id="input-@dl-horizontal-breakpoint" type="text" aria-describedby="help-block-@dl-horizontal-breakpoint" value="@grid-float-breakpoint" data-var="@dl-horizontal-breakpoint" class="form-control"/>
+    <p id="help-block-@dl-horizontal-breakpoint" class="help-block">Point at which .dl-horizontal becomes horizontal</p>
+  </div>
+  <div class="col-xs-4">
     <label for="input-@hr-border">@hr-border</label>
     <input id="input-@hr-border" type="text" aria-describedby="help-block-@hr-border" value="@gray-lighter" data-var="@hr-border" class="form-control"/>
     <p id="help-block-@hr-border" class="help-block">Horizontal line color.</p>
@@ -2483,19 +2498,62 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/typeahead.js/0.10.5/typeahead.jquery.min.js"></script> -->
+<script src="../dist/js/typeahead.js"></script>
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/hogan.js/3.0.2/hogan.min.js"></script>
+<script id="suggestion-item-template" type="text/template">
+
+<div class="suggestion" data-page="{{ page }}">
+  <div class="suggestion-context">
+    <div class="suggestion-h1">{{{ h1 }}}</div>
+  </div>
+  <div class="suggestion-content">
+    <div class="suggestion-hierarchy">{{{ hierarchy }}}</div>
+    <div class="suggestion-text well">{{{ text }}}</div>
+  </div>
+</div>
+
+</script>
 
 
-  <script src="../dist/js/bootstrap.min.js"></script>
+  <script src="../dist/js/bootstrap.js"></script>
 
 
 
-  <script src="../assets/js/docs.min.js"></script>
+  
+  <script src="../assets/js/vendor/holder.min.js"></script>
+  
+  <script src="../assets/js/vendor/ZeroClipboard.min.js"></script>
+  
+  <script src="../assets/js/vendor/anchor.js"></script>
+  
+  <script src="../assets/js/src/application.js"></script>
+  
+  <script src="../assets/js/src/search.js"></script>
+  
 
 
 
   <script>var __configBridge = {"autoprefixerBrowsers":["Android 2.3","Android >= 4","Chrome >= 20","Firefox >= 24","Explorer >= 8","iOS >= 6","Opera >= 12","Safari >= 6"],"jqueryCheck":["if (typeof jQuery === 'undefined') {","  throw new Error('Bootstrap\\'s JavaScript requires jQuery')","}\n"],"jqueryVersionCheck":["+function ($) {","  'use strict';","  var version = $.fn.jquery.split(' ')[0].split('.')","  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1)) {","    throw new Error('Bootstrap\\'s JavaScript requires jQuery version 1.9.1 or higher')","  }","}(jQuery);\n\n"]}</script>
   
-    <script src="../assets/js/customize.min.js"></script>
+    
+    <script src="../assets/js/vendor/autoprefixer.js"></script>
+    
+    <script src="../assets/js/vendor/less.min.js"></script>
+    
+    <script src="../assets/js/vendor/jszip.min.js"></script>
+    
+    <script src="../assets/js/vendor/uglify.min.js"></script>
+    
+    <script src="../assets/js/vendor/Blob.js"></script>
+    
+    <script src="../assets/js/vendor/FileSaver.js"></script>
+    
+    <script src="../assets/js/raw-files.min.js"></script>
+    
+    <script src="../assets/js/src/customizer.js"></script>
+    
   
 
 
