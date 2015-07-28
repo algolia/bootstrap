@@ -8,4 +8,6 @@ group :development, :test do
   gem 'rouge', '~> 1.7.4'
   gem 'sass', '~> 3.4.9'
   gem 'scss-lint', '~> 0.31'
+  gem 'jekyll-redirect-from'
+  gem 'algoliasearch-jekyll', '~> 0.4.3'
 end
