@@ -4,8 +4,26 @@
   'use strict';
 
   var algolia = window.algoliasearch('NNYOET9BZD', 'b107a5216b65db8915163e97bdc28234')
-  var suggestionTemplate = window.Hogan.compile($('#suggestion-item-template').html())
-  var footerTemplate = window.Hogan.compile($('#suggestion-footer-template').html())
+  var suggestionTemplate = window.Hogan.compile([
+    '{{#grouped_by_page_header}}<div class="suggestion-page">{{ page }}</div>{{/grouped_by_page_header}}',
+    '<div class="suggestion">',
+      '<div class="suggestion-context">',
+        '{{#grouped_by_h1_header}}{{{ h1 }}}{{/grouped_by_h1_header}}',
+      '</div>',
+      '<div class="suggestion-content">',
+        '<div class="suggestion-title">',
+          '{{#h1_highlight}}<span class="suggestion-title-prefix">{{{ h1_highlight }}}</span>{{/h1_highlight}}',
+          '{{#title}}<span class="suggestion-title-hierarchy">{{{ title }}}</span>{{/title}}',
+        '</div>',
+        '<div class="suggestion-text">{{{ text }}}</div>',
+      '</div>',
+    '</div>'
+  ].join(''))
+  var footerTemplate = window.Hogan.compile([
+    '<a href="http://www.algolia.com/?utm_source=bootstrap&amp;utm_medium=link&amp;utm_campaign=bootstrap_documentation_search" target="_blank" class="search-footer text-hide">',
+      'Powered by Algolia',
+    '</a>'
+  ].join(''))
   var $searchInput = $('.bs-docs-nav .bs-search .form-control')
   var typeaheadOptions = {
     hint: false,

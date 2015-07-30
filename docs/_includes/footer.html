@@ -37,30 +37,6 @@
 <script src="https://cdn.jsdelivr.net/typeahead.js/0.10.5/typeahead.jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/algoliasearch/3.7.5/algoliasearch.min.js"></script>
 <script src="https://cdn.jsdelivr.net/hogan.js/3.0.2/hogan.min.js"></script>
-<script id="suggestion-item-template" type="text/template">
-{%raw %}
-{{#grouped_by_page_header}}<div class="suggestion-page">{{ page }}</div>{{/grouped_by_page_header}}
-<div class="suggestion">
-  <div class="suggestion-context">
-    {{#grouped_by_h1_header}}{{{ h1 }}}{{/grouped_by_h1_header}}
-  </div>
-  <div class="suggestion-content">
-    <div class="suggestion-title">
-      {{#h1_highlight}}<span class="suggestion-title-prefix">{{{ h1_highlight }}}</span>{{/h1_highlight}}
-      {{#title}}<span class="suggestion-title-hierarchy">{{{ title }}}</span>{{/title}}
-    </div>
-    <div class="suggestion-text">{{{ text }}}</div>
-  </div>
-</div>
-{% endraw %}
-</script>
-<script id="suggestion-footer-template" type="text/template">
-{%raw %}
-<a href="http://www.algolia.com/?utm_source=bootstrap&amp;utm_medium=link&amp;utm_campaign=bootstrap_documentation_search" target="_blank" class="search-footer text-hide">
-  Powered by Algolia
-</a>
-{% endraw %}
-</script>
 
 {% if site.github %}
   <script src="../dist/js/bootstrap.min.js"></script>
