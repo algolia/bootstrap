@@ -3,27 +3,38 @@
 (function ($) {
   'use strict';
 
-  var algolia = window.algoliasearch('NNYOET9BZD', 'b107a5216b65db8915163e97bdc28234')
-  var suggestionTemplate = window.Hogan.compile([
-    '{{#grouped_by_page_header}}<div class="suggestion-page">{{ page }}</div>{{/grouped_by_page_header}}',
-    '<div class="suggestion">',
-      '<div class="suggestion-context">',
-        '{{#grouped_by_h1_header}}{{{ h1 }}}{{/grouped_by_h1_header}}',
-      '</div>',
-      '<div class="suggestion-content">',
-        '<div class="suggestion-title">',
-          '{{#h1_highlight}}<span class="suggestion-title-prefix">{{{ h1_highlight }}}</span>{{/h1_highlight}}',
-          '{{#title}}<span class="suggestion-title-hierarchy">{{{ title }}}</span>{{/title}}',
-        '</div>',
-        '<div class="suggestion-text">{{{ text }}}</div>',
-      '</div>',
-    '</div>'
-  ].join(''))
-  var footerTemplate = window.Hogan.compile([
-    '<a href="http://www.algolia.com/?utm_source=bootstrap&amp;utm_medium=link&amp;utm_campaign=bootstrap_documentation_search" target="_blank" class="search-footer text-hide">',
-      'Powered by Algolia',
-    '</a>'
-  ].join(''))
+  function suggestionTemplate(hit) {
+    var html = [];
+    if (hit.grouped_by_page_header) {
+      html.push('<div class="suggestion-page">' + hit.page + '</div>');
+    }
+    html.push('<div class="suggestion">');
+    html.push('  <div class="suggestion-context">');
+    if (hit.grouped_by_h1_header) {
+      html.push(hit.h1);
+    }
+    html.push('  </div>');
+    html.push('  <div class="suggestion-content">');
+    html.push('    <div class="suggestion-title">');
+    if (hit.h1_highlight) {
+      html.push('      <span class="suggestion-title-prefix">' + hit.h1_highlight + '</span>');
+    }
+    if (hit.title) {
+      html.push('      <span class="suggestion-title-hierarchy">' + hit.title + '</span>');
+    }
+    html.push('    </div>');
+    html.push('    <div class="suggestion-text">' + hit.text + '</div>');
+    html.push('  </div>');
+    html.push('</div>');
+    return html.join('');
+  }
+  function footerTemplate() {
+    return [
+      '<a href="http://www.algolia.com/?utm_source=bootstrap&amp;utm_medium=link&amp;utm_campaign=bootstrap_documentation_search" target="_blank" class="search-footer text-hide">',
+        'Powered by Algolia',
+      '</a>'
+    ].join('');
+  }
   var $searchInput = $('.bs-docs-nav .bs-search .form-control')
   var typeaheadOptions = {
     hint: false,
@@ -32,22 +43,27 @@
 
   // Typeahead dataset source
   function datasetSource(query, callback) {
-    algolia.search([
-      {
-        indexName: 'bootstrap',
-        query: query,
-        params: {
-          hitsPerPage: 5
-        }
+    // lightweight Algolia query
+    var params = {
+      query: query,
+      'x-algolia-api-key': 'b107a5216b65db8915163e97bdc28234',
+      'x-algolia-application-id': 'NNYOET9BZD',
+      hitsPerPage: 5
+    }
+    // several hostnames for fault-tolerance
+    var hosts = ['dsn.algolia.net', '1.algolianet.com', '2.algolianet.com', '3.algolianet.com'];
+    (function query(retry) {
+      if (retry >= hosts.length) {
+        callback([]);
+        return;
       }
-    ], function (err, data) {
-      if (err) {
-        $.error(err)
-        return
-      }
-
-      callback(reorderResults(data.results[0].hits))
-    })
+      var url = 'https://NNYOET9BZD-' + hosts[retry] + '/1/indexes/bootstrap';
+      $.ajax({ url: url, data: params, timeout: (2000 * (retry + 1)) }).then(function done(content) {
+        callback(reorderResults(content.hits));
+      }, function err() {
+        query(retry + 1);
+      });
+    })(0);
   }
 
   // Helper to get the value of an attribute, with optional highlight
@@ -107,10 +123,10 @@
     source: datasetSource,
     templates: {
       suggestion: function (item) {
-        return suggestionTemplate.render(item)
+        return suggestionTemplate(item)
       },
       footer: function () {
-        return footerTemplate.render()
+        return footerTemplate()
       }
     }
   }
