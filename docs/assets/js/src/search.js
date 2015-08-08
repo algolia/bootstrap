@@ -23,7 +23,9 @@
       html.push('      <span class="suggestion-title-hierarchy">' + hit.title + '</span>');
     }
     html.push('    </div>');
-    html.push('    <div class="suggestion-text">' + hit.text + '</div>');
+    if (hit.text) {
+      html.push('    <div class="suggestion-text">' + hit.text + '</div>');
+    }
     html.push('  </div>');
     html.push('</div>');
     return html.join('');
