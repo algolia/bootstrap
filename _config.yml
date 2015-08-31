@@ -39,3 +39,65 @@ cdn:
   css:            https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css
   js:             https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js
   jquery:         https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js
+
+algolia:
+  application_id: NNYOET9BZD
+  index_name:     bootstrap
+  record_css_selector: p,h1,h2,h3,h4,h5,h6
+  excluded_files:
+    - index.html
+    - getting-started.html
+    - about.html
+    - browser-bugs.html
+    - customize.html
+    - migration.html
+  settings:
+    advancedSyntax: true
+    highlightPostTag: </mark>
+    highlightPreTag: <mark>
+    ignorePlurals: true
+    minWordSizefor1Typo: 3
+    minWordSizefor2Typos: 7
+    separatorsToIndex: '-.'
+    attributesToIndex:
+      - h1
+      - h2
+      - h3
+      - h4
+      - h5
+      - h6
+      - unordered(codes)
+      - unordered(text)
+    attributesToRetrieve:
+      - anchor
+      - h1
+      - h2
+      - h3
+      - h4
+      - h5
+      - h6
+      - tag_name
+      - text
+      - title
+      - url
+    ranking:
+      - typo
+      - geo
+      - words
+      - proximity
+      - attribute
+      - custom
+    customRanking:
+      - desc(weight.tag_name)
+      - desc(weight.page)
+      - desc(weight.number_of_words)
+    attributesToSnippet:
+      - text:20
+    attributesToHighlight:
+      - text
+      - h1
+      - h2
+      - h3
+      - h4
+      - h5
+      - h6

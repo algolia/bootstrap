@@ -1,0 +1,280 @@
+// Search
+//
+// Add a search input and autocompletion through typeahead. The search is
+// hidden on small screens and disabled if JavaScript is disabled
+
+// Search is hidden by default, but replace the full header when activated
+// We use an hidden checkbox and label to toggle search
+.bd-toggle-search-checkbox {
+  display: none;
+}
+
+// .bd-sidebar {
+//   .bd-toggle-search-open {
+//     margin: 6px 0 0 0;
+//     color: #563d7c;
+//     cursor: pointer;
+//     &:hover {
+//       color: #463265;
+//       background-color: #f9f9f9;
+//     }
+//   }
+// }
+
+// .bd-toggle-search-checkbox:checked + .bd-sidebar {
+//   .navbar-brand, .bd-navbar-toggles {
+//     display: none;
+//   }
+//   .bd-navbar {
+//     .navbar-nav {
+//       display: none;
+//     }
+//     display: block;
+//     border-top: none;
+//     .bd-search {
+//       display: block;
+//     }
+//   }
+// }
+
+// Hide search from the search from the navbar menu
+
+.bd-sidebar {
+  // .bd-navbar {
+  //   clear: both;
+  //   .bd-search, .bd-toggle-search-open {
+  //     display: none;
+  //   }
+  // }
+  .bd-search {
+    .bd-toggle-search-close {
+      display: table-cell;
+      padding: 6px 6px;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+    .form-control {
+      border-radius: 4px;
+    }
+    .input-group-btn {
+      display: none;
+    }
+    .tt-dropdown-menu {
+      width: 100%;
+      padding: 0;
+      margin: 2px 0 0;
+      font-size: 14px;
+      text-align: left;
+      background-color: #fff;
+      -webkit-background-clip: padding-box;
+      background-clip: padding-box;
+      border: 1px solid #ccc;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      border-radius: 4px;
+      -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    }
+    .search-footer {
+      display: block;
+      height: 24px;
+      margin-right: 8px;
+      background-color: #fff;
+      background-image: url("/assets/img/algolia-logo.jpg");
+      background-repeat: no-repeat;
+      background-position: right center;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+    .tt-suggestion {
+      overflow: hidden;
+      color: #333;
+      cursor: pointer;
+      mark {
+        padding: 0;
+        background-color: #f0ecf3;
+      }
+    }
+    .suggestion-context {
+      display: none;
+    }
+    .suggestion-page {
+      padding: 5px;
+      font-weight: bold;
+      color: #563d7c;
+      text-align: center;
+      background-color: #f9f9f9;
+      border-top: 1px solid #eaeae8;
+      border-bottom: 1px solid #eaeae8;
+    }
+    .suggestion-content {
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .tt-suggestion.tt-cursor .suggestion-content {
+      color: #262626;
+      background-color: #f5f5f5;
+    }
+    .suggestion-title {
+      padding: 3px 5px;
+    }
+    .suggestion-title-prefix {
+      font-weight: bold;
+      color: #563d7c;
+      + .suggestion-title-hierarchy:before {
+        content: " › ";
+      }
+    }
+    .suggestion-text {
+      display: none;
+    }
+  }
+
+  &.bd-no-js {
+    .bd-toggle-search-open, .bd-search {
+      display: none;
+    }
+  }
+}
+
+// We need to wrap the input to be able to fully use the table-cell auto-expand
+// feature
+
+// We do not use the submit button here
+
+// Room enough to display the menu items, but not enough to display the search
+// input. We keep the magnifying glass to toggle search, but use another label
+// element as the trigger
+// @media (min-width: 768px) {
+//   // Reduce padding a bit so the magnifying glass can fit
+//   .bd-sidebar {
+//     .nav > li > a {
+//       padding: 15px 13px;
+//     }
+//     .bd-navbar {
+//       clear: none;
+//       .bd-toggle-search-open {
+//         display: block;
+//       }
+//       .bd-search {
+//         padding-right: 0;
+//         .form-control {
+//           width: 100%;
+//         }
+//       }
+//     }
+//   }
+//   .bd-toggle-search-checkbox:checked + .navbar {
+//     .navbar-brand, .bd-navbar-toggles {
+//       display: none;
+//     }
+//     .bd-navbar {
+//       .navbar-nav, .bd-toggle-search-open {
+//         display: none;
+//       }
+//     }
+//   }
+// }
+
+// Room enough to display the search input directly in the header. We revert
+// previously overwritten display and padding and add the submit button
+@media (min-width: 992px) {
+  .bd-sidebar {
+    // Revert the padding to its initial value
+    // .nav > li > a {
+    //   padding: 15px 15px;
+    // }
+    .twitter-typeahead {
+      display: table-cell !important;
+    }
+    .bd-toggle-search-open {
+      display: none;
+    }
+    .bd-search {
+      display: block;
+      padding: 8px 15px;
+    }
+    .bd-search {
+      .form-control {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      .input-group-btn {
+        display: table-cell;
+      }
+      .bd-toggle-search-close {
+        display: none;
+      }
+    }
+  }
+  // Force the wrapper element added by typeahead to behave
+  // Hide close button
+}
+
+// Room enough to provide a larger input field
+// @media (min-width: 1200px) {
+//   .bd-sidebar .bd-search .form-control {
+//     width: 350px;
+//   }
+// }
+
+// Hide every mention of search if JavaScript is disabled
+
+// Typeahead suggestion container. Place it nicely aligned with the input field
+// and create two fake columns. Use styles inspired by the .dropdown-menu class
+//
+
+@media print, (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  .bd-sidebar .bd-search .search-footer {
+    background-image: url("/assets/img/algolia-logo-2x.jpg");
+    -webkit-background-size: 48px 15px;
+    background-size: 48px 15px;
+  }
+}
+
+// More room to display results, we'll group the results by h1, in two neat
+// columns
+@media (min-width: 992px) {
+  .bd-sidebar .bd-search {
+    .tt-dropdown-menu {
+      left: -170px !important;
+      width: 390px;
+      background-image: -webkit-linear-gradient(left, #fff 118px, #563b7e 118px, #563b7e 120px, #fff 120px, #fff 100%);
+      background-image: -o-linear-gradient(left, #fff 118px, #563b7e 118px, #563b7e 120px, #fff 120px, #fff 100%);
+      background-image: linear-gradient(to right, #fff 118px, #563b7e 118px, #563b7e 120px, #fff 120px, #fff 100%);
+    }
+    .suggestion {
+      display: table;
+      width: 100%;
+    }
+    .suggestion-context {
+      display: table-cell;
+      width: 120px;
+      min-width: 120px;
+      padding: 5px 7px 5px 5px;
+      font-weight: bold;
+      color: #563d7c;
+      text-align: right;
+    }
+    .suggestion-content {
+      display: table-cell;
+      padding: 5px 10px;
+    }
+    .suggestion-title {
+      padding: 0;
+    }
+    .suggestion-title-prefix {
+      font-weight: normal;
+      color: inherit;
+    }
+    .suggestion-text {
+      display: block;
+      font-size: 12px;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .bd-sidebar .bd-search .tt-dropdown-menu {
+    left: -320px !important;
+    width: 500px;
+  }
+}

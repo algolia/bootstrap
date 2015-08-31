@@ -1,6 +1,15 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    algoliasearch (1.6.1)
+      httpclient (~> 2.4)
+      json (>= 1.5.1)
+    algoliasearch-jekyll (0.4.3)
+      algoliasearch (~> 1.4)
+      awesome_print (~> 1.6)
+      json (~> 1.8)
+      nokogiri (~> 1.6)
+    awesome_print (1.6.1)
     blankslate (2.1.2.4)
     celluloid (0.16.0)
       timers (~> 4.0.0)
@@ -15,7 +24,12 @@ GEM
     fast-stemmer (1.0.2)
     ffi (1.9.10)
     hitimes (1.2.2)
+<<<<<<< Updated upstream
     jekyll (2.5.3)
+=======
+    httpclient (2.6.0.1)
+    jekyll (2.5.2)
+>>>>>>> Stashed changes
       classifier-reborn (~> 2.0)
       colorator (~> 0.1)
       jekyll-coffeescript (~> 1.0)
@@ -40,13 +54,24 @@ GEM
       sass (~> 3.2)
     jekyll-watch (1.2.1)
       listen (~> 2.7)
+<<<<<<< Updated upstream
     kramdown (1.8.0)
     liquid (2.6.3)
     listen (2.10.1)
       celluloid (~> 0.16.0)
+=======
+    json (1.8.3)
+    kramdown (1.5.0)
+    liquid (2.6.1)
+    listen (2.8.4)
+      celluloid (>= 0.15.2)
+>>>>>>> Stashed changes
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     mercenary (0.3.5)
+    mini_portile (0.6.2)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
     parslet (1.5.0)
       blankslate (~> 2.0)
     posix-spawn (0.3.11)
@@ -74,6 +99,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+<<<<<<< Updated upstream
   jekyll (~> 2.5.3)
   jekyll-redirect-from (~> 0.8.0)
   rouge (~> 1.9.1)
@@ -82,3 +108,14 @@ DEPENDENCIES
 
 BUNDLED WITH
    1.10.6
+=======
+  algoliasearch-jekyll (~> 0.4.3)
+  jekyll (~> 2.5.2)
+  jekyll-redirect-from
+  rouge (~> 1.7.4)
+  sass (~> 3.4.9)
+  scss-lint (~> 0.31)
+
+BUNDLED WITH
+   1.10.5
+>>>>>>> Stashed changes
