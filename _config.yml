@@ -19,6 +19,7 @@ encoding:         UTF-8
 exclude:          [assets/scss/]
 
 gems:
+  - algoliasearch-jekyll
   - jekyll-redirect-from
 
 # Custom vars
@@ -39,3 +40,35 @@ cdn:
   css:            https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css
   js:             https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js
   jquery:         https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js
+
+algolia:
+  application_id: NNYOET9BZD
+  index_name:     bootstrap_v4
+  record_css_selector: p,h1,h2,h3,h4,h5,h6
+  settings:
+    highlightPreTag: <mark>
+    highlightPostTag: </mark>
+    ignorePlurals: true
+    minWordSizefor1Typo: 3
+    minWordSizefor2Typos: 7
+    attributesToIndex:
+      - category
+      - h1
+      - h2
+      - h3
+      - h4
+      - h5
+      - h6
+      - text
+      - unordered(code)
+    attributesToRetrieve:
+      - category
+      - title
+      - url
+    attributesToHighlight:
+      - category
+      - title
+    attributeForDistinct: url
+    customRanking:
+      - desc(weight)
+      - asc(order_in_page)

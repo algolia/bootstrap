@@ -50,3 +50,6 @@ scss-lint-report.xml
 # Folders to ignore
 bower_components
 node_modules
+
+# Algolia API key
+_algolia_api_key

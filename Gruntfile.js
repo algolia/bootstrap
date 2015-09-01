@@ -347,8 +347,10 @@ module.exports = function (grunt) {
       options: {
         ignore: [
           'Element “img” is missing required attribute “src”.',
-          'Attribute “autocomplete” not allowed on element “input” at this point.',
+          'Attribute “autocapitalize” not allowed on element “input” at this point.',
           'Attribute “autocomplete” not allowed on element “button” at this point.',
+          'Attribute “autocomplete” not allowed on element “input” at this point.',
+          'Attribute “autocorrect” not allowed on element “input” at this point.',
           'Element “div” not allowed as child of element “progress” in this context. (Suppressing further errors from this subtree.)',
           'Consider using the “h1” element as a top-level heading only (all “h1” elements are treated as top-level headings by many screen readers and other tools).',
           'The “datetime” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'

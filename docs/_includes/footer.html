@@ -32,17 +32,9 @@
 <script src="{{ site.baseurl }}/assets/js/ie10-viewport-bug-workaround.js"></script>
 
 {% if page.layout == "docs" %}
-<script src="{{ site.baseurl }}/assets/js/vendor/jekyll-search.js"></script>
-
-<script>
-SimpleJekyllSearch.init({
-  searchInput: document.getElementById('search-input'),
-  resultsContainer: document.getElementById('search-results'),
-  searchResultTemplate: '<a class="dropdown-item" href="{url}">{title}</a>',
-  noResultsText: '<div class="dropdown-item no-results">Sorry, there are no results for that search.</div>',
-  json: '/search.json'
-})
-</script>
+<script src="https://cdn.jsdelivr.net/typeahead.js/0.10.5/typeahead.jquery.min.js"></script>
+<script>window.jQuery.fn.typeahead || document.write('<script src="../assets/js/vendor/typeahead.jquery.min.js"><\/script>')</script>
+<script src="{{ site.baseurl }}/assets/js/src/search.js"></script>
 {% endif %}
 
 <script>

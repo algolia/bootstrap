@@ -10,3 +10,7 @@ group :development, :test do
   gem 'sass', '~> 3.4.18'
   gem 'scss_lint', '~> 0.41'
 end
+
+group :jekyll_plugins do
+  gem 'algoliasearch-jekyll', '~> 0.4.3'
+end
