@@ -86,8 +86,7 @@
     displayKey: function () { return $searchInput.val() },
     source: datasetSource,
     templates: {
-      suggestion: suggestionTemplate,
-      footer: '<a href="http://www.algolia.com/?utm_source=bootstrap&amp;utm_medium=link&amp;utm_campaign=bootstrap_documentation_search" target="_blank" class="tt-footer text-hide">'
+      suggestion: suggestionTemplate
     }
   }).bind('typeahead:selected', goToSuggestion)
 })(jQuery)

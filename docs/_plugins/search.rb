@@ -10,6 +10,7 @@ class BootstrapCustomSearchHelper
   def self.hook_each(item, node)
     # Excluding element we don't want to index
     return nil if excluded_page?(item)
+    return nil if toc?(item)
     return nil if example?(node)
 
     # Set the h1 as the page title
@@ -45,6 +46,11 @@ class BootstrapCustomSearchHelper
   def self.excluded_page?(item)
     return true unless item[:group]
     false
+  end
+
+  # Check if table of content
+  def self.toc?(item)
+    item[:h2] == 'Contents'
   end
 
   # Check if specified node is an example
